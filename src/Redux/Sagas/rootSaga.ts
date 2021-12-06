@@ -1,24 +1,29 @@
 import { getEmployeeHandler, deleteEmployeeHandler, createEmployeeHandler } from "./handlers/employees";
-import { takeLatest, fork } from "redux-saga/effects";
+import { takeLatest, fork, takeEvery,  } from "redux-saga/effects";
 import { deleteEmployeeState, getEmployees, addingEmployee } from "../Slices/EmployeesSlice";
+import axios from "axios";
 
-function* getEmployeeWatcher () {
+
+
+export default function* getEmployeeWatcher () {
     yield takeLatest(getEmployees.type,getEmployeeHandler)
+    console.log("object")
 }
 
-function* addEmployeeWatcher (){
-    yield takeLatest(addingEmployee.type, createEmployeeHandler)
-}
+// function* addEmployeeWatcher (){
+//     yield takeEvery(addingEmployee.type, createEmployeeHandler)
+// }
 
 
-function* deleteEmployeeWatcher (){
-    yield takeLatest(deleteEmployeeState.type, deleteEmployeeHandler)
-}
+// function* deleteEmployeeWatcher (){
+//     yield takeEvery(deleteEmployeeState.type, deleteEmployeeHandler)
+// }
 
 
-export default function* sagaWatecher(){
-    yield[
-        fork(getEmployeeWatcher),
-        fork(deleteEmployeeWatcher)
-    ]
-}
+// export default function* sagaWatecher(){
+//     yield[
+//         fork(addEmployeeWatcher),
+//         fork(getEmployeeWatcher),
+//         fork(deleteEmployeeWatcher),
+//     ]
+// }

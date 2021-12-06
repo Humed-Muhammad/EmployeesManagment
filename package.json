@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://localhost:7000/employee",
   "dependencies": {
     "@heroicons/react": "^1.0.5",
     "@redux-saga/types": "^1.1.0",

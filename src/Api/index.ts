@@ -13,16 +13,20 @@ const baseUrl = {
 const baseEndPoint = baseUrl.development;
 
 
-const getRequest = async (endPoint:string, key = "") => {
-    return axios.get<GetRequestTypes>(baseEndPoint + endPoint).then(({data})=>data)
+const requestHandler = async (endPoint:string, method, params="") => {
+    return await axios.request({
+        url:baseEndPoint+endPoint,
+        method:method,
+        params:params
+    })
 }
 
-const postRequest = async (endPoint:string, params:any, key = "") => {
-    return axios
-        .post(baseEndPoint + endPoint, params).then(({data})=>data)
+// const postRequest = async (endPoint:string, params:any, key = "") => {
+//     return axios
+//         .post(baseEndPoint + endPoint, params).then(({data})=>data)
 
-}
-const deleteRequest = async (endPoint:string,params:string) => {
-    return axios.delete(`${baseEndPoint}/${endPoint}/${params}`).then(({data})=>data)
-}
-export { getRequest, postRequest, deleteRequest }
+// }
+// const deleteRequest = async (endPoint:string,params:string) => {
+//     return axios.delete(`${baseEndPoint}/${endPoint}/${params}`).then(({data})=>data)
+// }
+export { requestHandler }
