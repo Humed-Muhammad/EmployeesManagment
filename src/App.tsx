@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import Navbar from "src/Components/Shared/Navbar/Navbar";
+import { Container } from "src/Components/StyledComponent";
+import Employess from "src/Components/Shared/EmployeeLIst/EmployeeListContainer";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container
+      height="100vh"
+      padding="0px"
+    >
+      <Container width="80%" justify="flex-start"  direction="column" height="100%">
+      <Navbar />
+      <Employess />
+      </Container>
+    </Container>
   );
-}
+};
 
 export default App;
