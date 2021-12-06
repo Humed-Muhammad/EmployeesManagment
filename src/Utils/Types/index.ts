@@ -65,3 +65,9 @@ export interface DividerProps {
   direction: string | number;
   color: string | number;
 }
+export interface GetRequestTypes{
+  Full_name:string,
+  Gender:string,
+  Salary:string,
+  Birth_date:string
+}
