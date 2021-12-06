@@ -6,9 +6,9 @@ import { RootState } from "../store";
  */
 
 export const selectEmployees = (state:RootState)=>{
-    const inputSelector = (state:RootState)=> state.employees.Emloyees
+    const inputSelector = (state:RootState)=> state.employees.Employees
 
     const outputSelector = createSelector([inputSelector], employees=>employees)
 
-    outputSelector(state)
+    return outputSelector(state)
 }

@@ -14,14 +14,16 @@ export const Input = styled("input")<Partial<InputProps>>(
     borderType,
     borderColor,
   }) => ({
-    color: color || colors.white,
-    backgroundColor: bg || colors.gray,
+    color: color || colors.gray,
+    backgroundColor: bg || colors.white,
     width: width,
     padding: padding || "5px",
     height: height,
-    border:
-      `${borderWidth} ${borderType} ${borderColor}` ||
-      `1px solid ${colors.border}`,
+    borderWidth:borderWidth|| "1px",
+    borderStyle: borderType ||"solid",
+    borderColor:borderColor || colors.yellow,
     borderRadius: radius || "3px",
+    opacity:1,
+    outline: "none"
   })
 );

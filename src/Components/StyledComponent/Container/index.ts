@@ -21,7 +21,9 @@ export const Container = styled("div")<Partial<ContainerProps>>(
     top,
     bottom,
     left,
-    right
+    right,
+    opacity,
+    zIndex=5
   }) => ({
     backgroundColor: bg || colors.white,
     width: width || "100%",
@@ -41,6 +43,8 @@ export const Container = styled("div")<Partial<ContainerProps>>(
     top:top,
     bottom:bottom,
     right:right,
-    left:left
+    left:left,
+    opacity:opacity||1,
+    zIndex:zIndex|5
   })
 );

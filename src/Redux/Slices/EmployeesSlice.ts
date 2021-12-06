@@ -1,11 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 const EmployeesSlices = createSlice({
     name: "Employees",
     initialState: {
-        Emloyees: [],
+        Employees: new Array,
         isFetchingEmployees:false,
         employeeId:"",
         deletingEmployee:false,
@@ -21,7 +20,7 @@ const EmployeesSlices = createSlice({
             console.log(true)
         },
         setEmployees: (state, action) => {
-            state.Emloyees = action.payload
+            state.Employees = action.payload
             state.isFetchingEmployees=false
         },
         deleteEmployeeState:(state)=>{
@@ -31,14 +30,14 @@ const EmployeesSlices = createSlice({
             state.employeeId = action.payload
         },
         deleteEmployee: (state, action) => {
-            state.Emloyees.splice(action.payload, 1)
+            state.Employees.splice(action.payload, 1)
             state.deletingEmployee = false
         },
         addingEmployee:(state)=>{
             state.isAddingEmployee = true
         },
-        createEmployee:(state,action)=>{
-            state.Emloyees.push(action.payload)
+        createEmployee(state,action:PayloadAction){
+            state.Employees.push(action.payload)
         },
         getEmployeeData:(state, action)=>{
             state.employeeData = action.payload

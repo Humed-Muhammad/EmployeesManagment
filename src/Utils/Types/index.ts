@@ -22,11 +22,13 @@ export interface ContainerProps {
   marginLeft: string | number;
   marginBottom: string | number;
   flex: string | number,
-  position:string | any,
-  top:string | any,
-    bottom:string | any,
-    left:string | any,
-    right:string | any,
+  position: string | any,
+  top: string | any,
+  bottom: string | any,
+  left: string | any,
+  right: string | any,
+  opacity: number | string,
+  zIndex: number
 }
 
 export interface TextProps {
@@ -65,9 +67,16 @@ export interface DividerProps {
   direction: string | number;
   color: string | number;
 }
-export interface GetRequestTypes{
-  Full_name:string,
-  Gender:string,
-  Salary:string,
-  Birth_date:string
+export interface GetRequestTypes {
+  Full_name: string,
+  Gender: string,
+  Salary: string,
+  Birth_date: string
+}
+export interface ResponseDataTypes {
+  name: string,
+  gender: string,
+  salary: string,
+  birth_date: string,
+  createdAt: string,
 }

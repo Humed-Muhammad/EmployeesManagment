@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
 import employees from "./Slices/EmployeesSlice"
+import uiState from "./Slices/uiStateSlice"
 import watcherSaga from "./Sagas/rootSaga";
 import createSagaMiddelware from "redux-saga"
 
@@ -8,7 +9,8 @@ const sagaMiddleware = createSagaMiddelware()
 
 export const store = configureStore({
     reducer: {
-        employees
+        employees,
+        uiState
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({thunk:false}).concat(sagaMiddleware),
     

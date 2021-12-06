@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { Method } from "axios";
 import {GetRequestTypes} from "src/Utils/Types"
 const header = {
     Accept: 'application/json',
@@ -13,7 +13,7 @@ const baseUrl = {
 const baseEndPoint = baseUrl.development;
 
 
-const requestHandler = async (endPoint:string, method, params="") => {
+const requestHandler = async (endPoint:string, method:Method, params:string|void="") => {
     return await axios.request({
         url:baseEndPoint+endPoint,
         method:method,

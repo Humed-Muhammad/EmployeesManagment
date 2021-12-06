@@ -1,7 +1,13 @@
 import Navbar from "src/Components/Shared/Navbar/Navbar";
 import { Container } from "src/Components/StyledComponent";
 import Employess from "src/Components/Shared/EmployeeLIst/EmployeeListContainer";
+import { useAppSelector } from "src/Redux/Hooks";
+import AddEmployeeContainer from "./Components/Shared/AddEmployee/AddEmployeeContainer";
+
 const App = () => {
+
+  const {openModal} = useAppSelector(state=>state.uiState)
+  console.log(openModal)
   return (
     <Container
       height="100vh"
@@ -11,6 +17,7 @@ const App = () => {
       <Navbar />
       <Employess />
       </Container>
+      {openModal&&<AddEmployeeContainer/>}
     </Container>
   );
 };
