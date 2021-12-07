@@ -21,7 +21,6 @@ const EmployeesSlices = createSlice({
         // Still keeping the imuttablty of the redux
         getEmployees: (state) => { 
             state.isFetchingEmployees = true
-            console.log(true)
         },
         setEmployees: (state, action) => {
             state.Employees = action.payload

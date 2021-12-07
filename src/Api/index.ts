@@ -7,10 +7,10 @@ const header = {
 };
 
 const baseUrl = {
-    production: '',
+    production: 'https://employe-mg.herokuapp.com',
     development: 'http://localhost:7000/employees',
 };
-const baseEndPoint = baseUrl.development;
+const baseEndPoint = baseUrl.production;
 
 
 const getRequest = async (endPoint:string, method:Method, params:string|void="") => {

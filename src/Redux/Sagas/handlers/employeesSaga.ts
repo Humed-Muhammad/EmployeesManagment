@@ -8,10 +8,15 @@ import { colors } from "src/Utils/Colors";
 export function * getEmployeeHandler (){
    try {
     const {data} = yield call(async()=> await getRequest("/","get"))
-    console.log(data)
     yield put(setEmployees(data))
    } catch (error) {
-       console.log(error)
+    toast("Un able to fetch please try again lattter!",{
+        theme:"light",
+        position:"top-right",
+        style:{
+            backgroundColor:colors.red
+        }
+       })
    }
 }
 
@@ -26,7 +31,6 @@ export function* deleteEmployeeHandler(action:PayloadAction){
            })
        }
     } catch (error) {
-        console.log(error)
         toast("Un able to delete please try again lattter!",{
             theme:"light",
             position:"top-right",
@@ -50,12 +54,17 @@ export function* createEmployeeHandler(action:PayloadAction){
            yield put(faildToCreateEmployee(true))
        }
     } catch (error) {
-        console.log(error)
+        toast("Un able to create employee please try again lattter!",{
+            theme:"light",
+            position:"top-right",
+            style:{
+                backgroundColor:colors.red
+            }
+           })
     }
 }
 
 export function* updateEmployeeHandler(action:PayloadAction){
-    console.log(action.payload)
     try {
         const {data} = yield call(()=>postRequest("/update",action.payload))
         yield put(updateEmployee(data.data))
@@ -63,9 +72,7 @@ export function* updateEmployeeHandler(action:PayloadAction){
             theme:"light",
             position:"top-right"
         })
-        console.log(data)
     } catch (error) {
-        console.log(error)
         toast("Unable to update!!! ",{
             theme:"light",
             position:"top-right"
