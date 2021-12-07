@@ -2,13 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
+    "build": "tsc -b",
     "prestart": "npm run build",
-    "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
-    "start": "nodemon dist/index.js",
+    "dev": "node --watch src -e ts,ejs --exec npm run dev:start",
+    "start": "node dist/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
