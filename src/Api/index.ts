@@ -22,8 +22,7 @@ const getRequest = async (endPoint:string, method:Method, params:string|void="")
 }
 
 const postRequest = async (endPoint:string, params:void) => {
-    // const jsonData = JSON.stringify(params)
-    console.log(params)
+
     return axios
         .post(baseEndPoint + endPoint, params )
 

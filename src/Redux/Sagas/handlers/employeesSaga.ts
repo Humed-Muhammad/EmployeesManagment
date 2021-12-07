@@ -13,9 +13,6 @@ export function * getEmployeeHandler (){
     toast("Un able to fetch please try again lattter!",{
         theme:"light",
         position:"top-right",
-        style:{
-            backgroundColor:colors.red
-        }
        })
    }
 }
@@ -34,9 +31,6 @@ export function* deleteEmployeeHandler(action:PayloadAction){
         toast("Un able to delete please try again lattter!",{
             theme:"light",
             position:"top-right",
-            style:{
-                backgroundColor:colors.red
-            }
            })
     }
 }
@@ -57,9 +51,6 @@ export function* createEmployeeHandler(action:PayloadAction){
         toast("Un able to create employee please try again lattter!",{
             theme:"light",
             position:"top-right",
-            style:{
-                backgroundColor:colors.red
-            }
            })
     }
 }
