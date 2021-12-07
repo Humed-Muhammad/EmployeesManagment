@@ -38,11 +38,11 @@ export const createEmployee = async (req: Request, res: Response) => {
       if(error){
         // tslint:disable-next-line:no-console
         console.log(error)
-        res.status(201).json( error);
+        res.status(201).json({status:false, data: error});
       }else{
         // tslint:disable-next-line:no-console
         console.log(result)
-        res.status(201).json( result);
+        res.status(201).json({status:true,data:result});
 
       }
     });
@@ -52,16 +52,16 @@ export const createEmployee = async (req: Request, res: Response) => {
 };
 
 export const updateEmployeeData = async (req: Request, res: Response) => {
-  const { id, name, gender, salary, birthDate } = req.body;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json(`There is no employee with id: ${id}`);
+  const { _id, name, gender, salary, birth_date } = req.body;
+  if (!mongoose.Types.ObjectId.isValid( _id)) {
+    return res.status(404).json({ _id, name, gender, salary, birth_date });
   }
-  const updateEmployee = { name, gender, salary, birthDate, _id: id };
+  const updateEmployee = { name, gender, salary, birth_date, _id };
   try {
-    await EmployeeModel.findByIdAndUpdate(id, updateEmployee, { new: true });
-    res.status(200).json("Successfully updated!");
+    await EmployeeModel.findByIdAndUpdate( _id, updateEmployee, { new: true });
+    res.status(200).json({status:true,data:{ _id, name, gender, salary, birth_date }});
   } catch (error) {
-    res.json({ message: error.message });
+    res.json({status:false, data:error.message});
   }
 };
 
@@ -72,9 +72,9 @@ export const deleteEmployee = async (req: Request, res: Response) => {
   }
   try {
     await EmployeeModel.findByIdAndRemove(id);
-    res.status(200).json({ message: "Employee deleted successfully." });
+    res.status(200).json({ status:true, message: "Employee deleted successfully." });
   } catch (error) {
-    res.json({ message: error.message });
+    res.json({ status:false, message: error.message });
   }
 };
 
