@@ -24,6 +24,7 @@ const App = () => {
       </Container>
      </Online>
      <Offline>
+       
        <Container direction="column" >
        <InformationCircleIcon width="50px" color={colors.red} />
         <Text>Oppss! You are offline please connect to the internate</Text>
