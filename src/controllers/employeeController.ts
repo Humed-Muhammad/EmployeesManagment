@@ -26,17 +26,26 @@ export const getEmployee = async (req: Request, res: Response) => {
   }
 };
 
-/**
- *
- * @param {import('express').Request} req
- * @param {import('express').Response} res
- */
+
+
+
 export const createEmployee = async (req: Request, res: Response) => {
-  const { name, gender, salary, birthDate } = req.body;
-  const newEmployee = new EmployeeModel({ name, gender, salary, birthDate });
+  // const { name, gender, salary, birth_date } = req.body;
+  const data = req.body
+  const newEmployee = new EmployeeModel(data);
   try {
-    await newEmployee.save();
-    res.status(201).json("Employee Successfully created");
+    await newEmployee.save((error:Error, result:string)=>{
+      if(error){
+        // tslint:disable-next-line:no-console
+        console.log(error)
+        res.status(201).json( error);
+      }else{
+        // tslint:disable-next-line:no-console
+        console.log(result)
+        res.status(201).json( result);
+
+      }
+    });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

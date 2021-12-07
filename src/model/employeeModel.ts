@@ -4,12 +4,13 @@ const employeeSchema = new Schema({
   name: String,
   gender: String,
   salary: String,
-  birthDate: Date,
+  birth_date: Date,
   createdAt: {
     type: Date,
     default: new Date(),
   },
 });
+
 
 const Employee = model("Employee", employeeSchema);
 
