@@ -74,6 +74,7 @@ export interface GetRequestTypes {
   Birth_date: string
 }
 export interface ResponseDataTypes {
+  _id:string,
   name: string,
   gender: string,
   salary: string,

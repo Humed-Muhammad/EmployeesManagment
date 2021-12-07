@@ -30,13 +30,20 @@ const EmployeesSlices = createSlice({
             state.employeeId = action.payload
         },
         deleteEmployee: (state, action) => {
-            state.Employees.splice(action.payload, 1)
-            state.deletingEmployee = false
+            // state.deletingEmployee = false
+            // state.Employees.map((item,index)=>{
+                //     if(item._id === action.payload){
+                    //         state.Employees.splice(index, 1)
+                    //         return
+                    //     }
+                    // })
+                    const id =  state.Employees.findIndex(item=>item._id===action.payload)
+                    state.Employees.splice(id, 1)
         },
         addingEmployee:(state)=>{
             state.isAddingEmployee = true
         },
-        createEmployee(state,action:PayloadAction){
+        createEmployee(state,action){
             state.Employees.push(action.payload)
         },
         getEmployeeData:(state, action)=>{
