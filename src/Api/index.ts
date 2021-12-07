@@ -7,7 +7,7 @@ const header = {
 };
 
 const baseUrl = {
-    production: 'https://employe-mg.herokuapp.com',
+    production: 'https://employe-mang.herokuapp.com',
     development: 'http://localhost:7000/employees',
 };
 const baseEndPoint = baseUrl.production;
