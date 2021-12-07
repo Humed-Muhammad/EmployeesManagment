@@ -6,10 +6,14 @@ const EmployeesSlices = createSlice({
     initialState: {
         Employees: new Array,
         isFetchingEmployees:false,
+        faildToCtreate:false,
         employeeId:"",
         deletingEmployee:false,
         isAddingEmployee:false,
-        employeeData:{}
+        employeeData:{},
+        employeeIdToUpdate:"",
+        findedEmployee:{},
+        isUpdating:false
     },
     reducers: {
         // in redux toolkit we can directly set the state as if we are mutating it but under the hood 
@@ -30,13 +34,6 @@ const EmployeesSlices = createSlice({
             state.employeeId = action.payload
         },
         deleteEmployee: (state, action) => {
-            // state.deletingEmployee = false
-            // state.Employees.map((item,index)=>{
-                //     if(item._id === action.payload){
-                    //         state.Employees.splice(index, 1)
-                    //         return
-                    //     }
-                    // })
                     const id =  state.Employees.findIndex(item=>item._id===action.payload)
                     state.Employees.splice(id, 1)
         },
@@ -46,8 +43,29 @@ const EmployeesSlices = createSlice({
         createEmployee(state,action){
             state.Employees.push(action.payload)
         },
+        faildToCreateEmployee:(state, action)=>{
+            state.faildToCtreate = action.payload
+        },
         getEmployeeData:(state, action)=>{
             state.employeeData = action.payload
+        },
+        getEmployeeIdToUpdate:(state, action)=>{
+            state.employeeIdToUpdate = action.payload
+        },
+        updateEmployee:(state, action)=>{
+            const entry = state.Employees.findIndex(item=>item._id === state.employeeIdToUpdate)
+            state.Employees[entry] = action.payload
+            // state.Employees.push(action.payload)
+        },
+        updateRequest:(state, action)=>{
+            state.employeeData = action.payload
+        },
+        findEmployeeData:(state, action)=>{
+            const item = state.Employees.find(item=>item._id===action.payload)
+            state.findedEmployee = item
+        },
+        checkIsUpdating:(state,action) =>{
+            state.isUpdating = action.payload
         }
     }
 })
@@ -61,7 +79,13 @@ export const {
     getEmployeeId,
     addingEmployee,
     createEmployee,
-    getEmployeeData
+    getEmployeeData,
+    faildToCreateEmployee,
+    getEmployeeIdToUpdate,
+    updateEmployee,
+    updateRequest,
+    findEmployeeData,
+    checkIsUpdating
 } = EmployeesSlices.actions
 
 export default EmployeesSlices.reducer

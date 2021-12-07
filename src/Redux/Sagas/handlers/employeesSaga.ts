@@ -1,10 +1,9 @@
 import {call, put, CallEffect} from "redux-saga/effects"
 import { deleteRequest, getRequest, postRequest } from "src/Api";
-import { getEmployees, setEmployees, deleteEmployee, createEmployee, deleteEmployeeState } from "src/Redux/Slices/EmployeesSlice";
-import { GetRequestTypes } from "src/Utils/Types";
-import { useAppSelector } from "src/Redux/Hooks";
+import { getEmployees, setEmployees, deleteEmployee, createEmployee, deleteEmployeeState, faildToCreateEmployee, updateEmployee } from "src/Redux/Slices/EmployeesSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
-// const {employeeId, employeeData} = useAppSelector(state=>state.employees)
+import {toast} from "react-toastify"
+import { colors } from "src/Utils/Colors";
 
 export function * getEmployeeHandler (){
    try {
@@ -19,18 +18,57 @@ export function * getEmployeeHandler (){
 export function* deleteEmployeeHandler(action:PayloadAction){
     try {
        const {data} =  yield call(async ()=> await deleteRequest("/",action.payload))
-       console.log(data)
-       yield put(deleteEmployee(action.payload))
+       if(data.status){
+           yield put(deleteEmployee(action.payload))
+           toast(data.message,{
+            theme:"light",
+            position:"top-right"
+           })
+       }
     } catch (error) {
         console.log(error)
+        toast("Un able to delete please try again lattter!",{
+            theme:"light",
+            position:"top-right",
+            style:{
+                backgroundColor:colors.red
+            }
+           })
     }
 }
 
 export function* createEmployeeHandler(action:PayloadAction){
     try {
        const {data} =  yield call(()=>postRequest("/", action.payload ))
-       yield put(createEmployee(data))
+       if(data.status){
+           yield put(createEmployee(data.data))
+           toast("Employee successfully updated!",{
+               theme:"light",
+               position:"top-right"
+           })
+       }else{
+           yield put(faildToCreateEmployee(true))
+       }
     } catch (error) {
         console.log(error)
+    }
+}
+
+export function* updateEmployeeHandler(action:PayloadAction){
+    console.log(action.payload)
+    try {
+        const {data} = yield call(()=>postRequest("/update",action.payload))
+        yield put(updateEmployee(data.data))
+        toast("Successfully updated!",{
+            theme:"light",
+            position:"top-right"
+        })
+        console.log(data)
+    } catch (error) {
+        console.log(error)
+        toast("Unable to update!!! ",{
+            theme:"light",
+            position:"top-right"
+        })
     }
 }

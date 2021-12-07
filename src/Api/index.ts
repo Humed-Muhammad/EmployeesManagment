@@ -31,4 +31,6 @@ const postRequest = async (endPoint:string, params:void) => {
 const deleteRequest = async (endPoint:string,params:void) => {
     return axios.delete(`${baseEndPoint}/${params}`)
 }
+
+
 export { getRequest, deleteRequest, postRequest }

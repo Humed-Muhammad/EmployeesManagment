@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react'
 import EmployeeList from "./EmployeeList";
 import { useAppDispatch, useAppSelector } from 'src/Redux/Hooks';
-import { deleteEmployee, getEmployees } from 'src/Redux/Slices/EmployeesSlice';
+import { checkIsUpdating, findEmployeeData, getEmployeeId, getEmployeeIdToUpdate, getEmployees } from 'src/Redux/Slices/EmployeesSlice';
 import { selectEmployees } from 'src/Redux/MemoizedSelectors';
 import { Button, Container, Text } from 'src/Components/StyledComponent';
 import { PuzzleIcon } from "@heroicons/react/outline"
@@ -17,10 +17,18 @@ const EmployeeListContainer = () => {
     }, [])
 
     const handleDelete = useCallback((id:string) =>{
-        dispatch(deleteEmployee(id))
+        dispatch(getEmployeeId(id))
     },[])
+
+    const handleUpdate = (id:string) =>{
+        dispatch(findEmployeeData(id))
+        dispatch(getEmployeeIdToUpdate(id))
+        dispatch(toogleModal())
+        dispatch(checkIsUpdating(true))
+    }
+
     const List = Employees.map((item, index) => (
-        <EmployeeList handleDelete={handleDelete} data={item} key={item['_id']} />
+        <EmployeeList handleUpdate={handleUpdate} handleDelete={handleDelete} data={item} key={item['_id']} />
     ))
 
     return (
@@ -35,12 +43,17 @@ const EmployeeListContainer = () => {
                 </Container>) : (
                     <>
                         <Container marginTop="20px" justify="flex-end">
-                            <Button onClick={() => dispatch(toogleModal())} padding="10px">
+                            <Button onClick={() => {
+                                dispatch(toogleModal())
+                                dispatch(checkIsUpdating(false))
+                                }} padding="10px">
                                 Add Employee
                             </Button>
                         </Container>
                         <Container height="60px" justify="space-around">
+                            <Container width="50px">
                             <Text>Employee</Text>
+                            </Container>
                             <Text>Gender</Text>
                             <Text>Salary</Text>
                             <Text>Birth date</Text>

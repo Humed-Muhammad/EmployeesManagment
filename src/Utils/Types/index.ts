@@ -28,7 +28,8 @@ export interface ContainerProps {
   left: string | any,
   right: string | any,
   opacity: number | string,
-  zIndex: number
+  zIndex: number,
+  flexWrap:string|any
 }
 
 export interface TextProps {
