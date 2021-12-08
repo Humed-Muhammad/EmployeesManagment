@@ -40,7 +40,7 @@ export function* createEmployeeHandler(action:PayloadAction){
        const {data} =  yield call(()=>postRequest("/", action.payload ))
        if(data.status){
            yield put(createEmployee(data.data))
-           toast("Employee successfully updated!",{
+           toast("Employee successfully Created!",{
                theme:"light",
                position:"top-right"
            })
