@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://employe-mang.herokuapp.com",
+  "proxy": "https://employe-mang.herokuapp.com/employees",
   "dependencies": {
     "@heroicons/react": "^1.0.5",
     "@redux-saga/types": "^1.1.0",
