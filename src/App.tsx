@@ -18,7 +18,7 @@ const App = () => {
       padding="0px"
     >
      <Online>
-     <Container width="95vw" justify="flex-start"  direction="column" height="100vh">
+     <Container width="80vw" justify="flex-start"  direction="column" height="100vh">
       <Navbar />
       <Employess />
       </Container>
