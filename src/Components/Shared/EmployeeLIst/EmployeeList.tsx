@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Text, Card, Avatar, Button } from "src/Components/StyledComponent";
+import { Container, Text, Card, Avatar } from "src/Components/StyledComponent";
 import { colors } from "src/Utils/Colors";
 import man from "src/Assets/Images/man.png"
 import woman from "src/Assets/Images/woman.png"

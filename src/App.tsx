@@ -5,7 +5,7 @@ import { useAppSelector } from "src/Redux/Hooks";
 import AddEmployeeContainer from "./Components/Shared/AddEmployee/AddEmployeeContainer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Online, Offline, Detector} from "react-detect-offline"
+import {Online, Offline} from "react-detect-offline"
 import { InformationCircleIcon } from "@heroicons/react/outline"
 import { colors } from "./Utils/Colors";
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
       padding="0px"
     >
      <Online>
-     <Container width="80vw" justify="flex-start"  direction="column" height="100vh">
+     <Container width="95vw" justify="flex-start"  direction="column" height="100vh">
       <Navbar />
       <Employess />
       </Container>

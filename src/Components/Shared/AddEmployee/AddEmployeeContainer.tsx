@@ -1,6 +1,6 @@
 import AddEmployee from './AddEmployee'
-import { useAppDispatch, useAppSelector } from 'src/Redux/Hooks'
-import { addingEmployee, createEmployee, getEmployeeData, getEmployees, updateRequest } from 'src/Redux/Slices/EmployeesSlice'
+import { useAppDispatch } from 'src/Redux/Hooks'
+import { getEmployeeData, updateRequest } from 'src/Redux/Slices/EmployeesSlice'
 
 const AddEmployeeContainer = () => {
     const dispatch = useAppDispatch()
